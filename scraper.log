@@ -106,3 +106,111 @@
 [2026-05-15 02:24:41]    wrote changes.md
 [2026-05-15 02:24:41] ==== Run done ====
 
+[2026-06-01 21:07:38] ==== Run start (providers: ALL) ====
+[2026-06-01 21:07:38] -- art (scrape_active_release) --
+[2026-06-01 21:07:41]    found 4 courses
+[2026-06-01 21:07:41]    4 within 365-day window
+[2026-06-01 21:07:41] -- barbell (scrape_barbell_rehab) --
+[2026-06-01 21:07:43]    found 1 courses
+[2026-06-01 21:07:43]    1 within 365-day window
+[2026-06-01 21:07:43] -- mulligan (scrape_mulligan) --
+[2026-06-01 21:07:46]    found 0 courses
+[2026-06-01 21:07:46]    0 within 365-day window
+[2026-06-01 21:07:46] -- cup (scrape_cup_therapy) --
+[2026-06-01 21:07:48]    found 13 courses
+[2026-06-01 21:07:48]    11 within 365-day window
+[2026-06-01 21:07:48] -- agile (scrape_agile_pt) --
+[2026-06-01 21:07:51]   Agile PT: parsed 4 CA event(s)
+[2026-06-01 21:07:51]    found 4 courses
+[2026-06-01 21:07:51]    3 within 365-day window
+[2026-06-01 21:07:51] -- cpta (scrape_cpta) --
+[2026-06-01 21:07:53]   FETCH FAILED https://www.ccapta.org/page/CPTACourses: 403 Client Error: Forbidden for url: https://www.ccapta.org/page/CPTACourses
+[2026-06-01 21:07:53]   CPTA: courses page fetch failed (will still try homepage)
+[2026-06-01 21:07:55]   FETCH FAILED https://www.ccapta.org/: 403 Client Error: Forbidden for url: https://www.ccapta.org/
+[2026-06-01 21:07:55]    found 1 courses
+[2026-06-01 21:07:55]    1 within 365-day window
+[2026-06-01 21:07:55] -- ucsf (scrape_ucsf) --
+[2026-06-01 21:07:57]    found 1 courses
+[2026-06-01 21:07:57]    0 within 365-day window
+[2026-06-01 21:07:57] -- pri (scrape_pri) --
+[2026-06-01 21:08:13]    found 3 courses
+[2026-06-01 21:08:13]    3 within 365-day window
+[2026-06-01 21:08:13] -- ipa (scrape_ipa) --
+[2026-06-01 21:08:13]    found 26 courses
+[2026-06-01 21:08:13]    23 within 365-day window
+[2026-06-01 21:08:13] -- gls (scrape_great_lakes) --
+[2026-06-01 21:08:13]    found 2 courses
+[2026-06-01 21:08:13]    2 within 365-day window
+[2026-06-01 21:08:13] -- hw (scrape_herman_wallace) --
+[2026-06-01 21:08:13]    found 1 courses
+[2026-06-01 21:08:13]    1 within 365-day window
+[2026-06-01 21:08:13] -- wilk (scrape_wilk) --
+[2026-06-01 21:08:13]    found 0 courses
+[2026-06-01 21:08:13]    0 within 365-day window
+[2026-06-01 21:08:13] -- vestibular (scrape_vestibular) --
+[2026-06-01 21:08:13]    found 1 courses
+[2026-06-01 21:08:13]    1 within 365-day window
+[2026-06-01 21:08:13] -- fms (scrape_fms) --
+[2026-06-01 21:08:15]   FMS: events page is JavaScript-rendered (static HTML shows 'No results returned'). Install Playwright for real scraping: `python3 -m pip install playwright && python3 -m playwright install chromium`, then re-run with `python3 ceu_scraper.py --use-playwright`. Or add confirmed CA dates to SEED_FMS_2026 in scrape_fms().
+[2026-06-01 21:08:15]    found 0 courses
+[2026-06-01 21:08:15]    0 within 365-day window
+[2026-06-01 21:08:15] -- amsi (scrape_amsi) --
+[2026-06-01 21:08:26]   AMSI: parsed 120 dated entries across 5 product pages
+[2026-06-01 21:08:26]    found 120 courses
+[2026-06-01 21:08:26]    dropped 90 out-of-region courses
+[2026-06-01 21:08:26]    0 within 365-day window
+[2026-06-01 21:08:26] -- aamt (scrape_aamt) --
+[2026-06-01 21:08:28]   AAMT: parsed 3 upcoming seminar(s) (text-walk=3)
+[2026-06-01 21:08:28]    found 3 courses
+[2026-06-01 21:08:28]    dropped 3 out-of-region courses
+[2026-06-01 21:08:28]    0 within 365-day window
+[2026-06-01 21:08:28] -- eldoa (scrape_eldoa) --
+[2026-06-01 21:08:31]   ELDOA/SomaVOYER: parsed 11 entries from somavoyer.com/course-calendar
+[2026-06-01 21:08:36]   ELDOA: eldoa.com seminars page returned content; verify manually
+[2026-06-01 21:08:36]    found 13 courses
+[2026-06-01 21:08:36]    12 within 365-day window
+[2026-06-01 21:08:36] -- ne_seminars (scrape_northeast_seminars) --
+[2026-06-01 21:08:41]   Northeast Seminars: 0 CA-area events on current public pages (Wilk 2026 is NY + Natick MA only; verify Mulligan/BFRT pages if you want a wider trawl)
+[2026-06-01 21:08:41]    found 0 courses
+[2026-06-01 21:08:41]    0 within 365-day window
+[2026-06-01 21:08:41] -- frs (scrape_frs) --
+[2026-06-01 21:08:45]   FRS: parsed 11 CA in-person event(s)
+[2026-06-01 21:08:45]    found 11 courses
+[2026-06-01 21:08:45]    11 within 365-day window
+[2026-06-01 21:08:45] -- painfree (scrape_painfree) --
+[2026-06-01 21:08:47]   Pain Free Training: 0 CA live events in static HTML. The events page appears to be JavaScript-rendered (only on-demand products visible). Check https://painfreetraining.com/events/ in a browser; add confirmed CA dates to SEED_PAINFREE in this function.
+[2026-06-01 21:08:47]    found 0 courses
+[2026-06-01 21:08:47]    0 within 365-day window
+[2026-06-01 21:08:47] -- dns (scrape_dns) --
+[2026-06-01 21:08:51]   DNS: found 261 course-anchor links, regex matched 261; 14 match California
+[2026-06-01 21:08:51]    found 21 courses
+[2026-06-01 21:08:51]    19 within 365-day window
+[2026-06-01 21:08:51] -- usc (scrape_usc) --
+[2026-06-01 21:08:53]   USC: parsed 6 in-radius courses from https://pt.usc.edu/upcoming-courses/
+[2026-06-01 21:08:53]    found 6 courses
+[2026-06-01 21:08:53]    6 within 365-day window
+[2026-06-01 21:08:53] -- cpta_approved (scrape_cpta_approved_list) --
+[2026-06-01 21:08:53]   cpta_approved: cpta_approved_courses.json not found — skip (this is fine if you haven't imported the official CPTA list yet).
+[2026-06-01 21:08:53]    found 0 courses
+[2026-06-01 21:08:53]    0 within 365-day window
+[2026-06-01 21:08:53] -- eb_ca_physical_therapy_continuing_educ (scrape_eventbrite_ca_physical_therapy_continuing_educ) --
+[2026-06-01 21:08:55]   FETCH FAILED https://www.eventbrite.com/d/ca/physical-therapy-continuing-education/: 405 Client Error: Not Allowed for url: https://www.eventbrite.com/d/ca/physical-therapy-continuing-education/
+[2026-06-01 21:08:55]   eventbrite (ca/physical-therapy-continuing-education): no HTML from https://www.eventbrite.com/d/ca/physical-therapy-continuing-education/
+[2026-06-01 21:08:55]    found 0 courses
+[2026-06-01 21:08:55]    0 within 365-day window
+[2026-06-01 21:08:55] -- eb_ca_manual_therapy (scrape_eventbrite_ca_manual_therapy) --
+[2026-06-01 21:08:57]   FETCH FAILED https://www.eventbrite.com/d/ca/manual-therapy/: 405 Client Error: Not Allowed for url: https://www.eventbrite.com/d/ca/manual-therapy/
+[2026-06-01 21:08:57]   eventbrite (ca/manual-therapy): no HTML from https://www.eventbrite.com/d/ca/manual-therapy/
+[2026-06-01 21:08:57]    found 0 courses
+[2026-06-01 21:08:57]    0 within 365-day window
+[2026-06-01 21:08:57] -- eb_ca_dry_needling_course (scrape_eventbrite_ca_dry_needling_course) --
+[2026-06-01 21:08:59]   FETCH FAILED https://www.eventbrite.com/d/ca/dry-needling-course/: 405 Client Error: Not Allowed for url: https://www.eventbrite.com/d/ca/dry-needling-course/
+[2026-06-01 21:08:59]   eventbrite (ca/dry-needling-course): no HTML from https://www.eventbrite.com/d/ca/dry-needling-course/
+[2026-06-01 21:08:59]    found 0 courses
+[2026-06-01 21:08:59]    0 within 365-day window
+[2026-06-01 21:08:59] == Total after dedup: 98 ==
+[2026-06-01 21:08:59] == Diff: +6 added, ~0 changed, -10 removed ==
+[2026-06-01 21:08:59]    wrote courses_current.md (98 courses)
+[2026-06-01 21:08:59]    wrote changes.md
+[2026-06-01 21:08:59] ==== Run done ====
+
