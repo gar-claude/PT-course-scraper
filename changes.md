@@ -1,7 +1,96 @@
-# CEU Course Changes — 2026-06-05
+# CEU Course Changes — 2026-06-06
 
 
-## 🟢 Newly listed (1)
+## 🟡 Changed (91)
 
-- **2026-06-08** — DNS Skills Workshop *(DNS / Prague School of Rehabilitation)* — Stanford, CA
-  - course.php?c_id=4095
+- **2026-08-21** — Skills Course in Viscero-Somatic Patterns *(DNS / Prague School of Rehabilitation)*
+- **2026-08-05** — SFGH: Fresh Cadaver Investigation of the Upper Quarter and Trunk w/ Carla Stecco *(Integrated Movement Health / Cup Therapy)*
+- **2026-06-14** — Level 2 Advanced with MFD Precision Pump *(Integrated Movement Health / Cup Therapy)*
+- **2026-10-16** — GAIT: Functional Gait *(Institute of Physical Art (IPA))*
+- **2026-06-13** — Non-Therapist FR® Spine Seminar (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-08-06** — SFGH: Fresh Cadaver Dissection Lower Quarter and Lumbo-Pelvic w/ Carla Stecco *(Integrated Movement Health / Cup Therapy)*
+- **2026-07-11** — Sports Movement Analysis: Dance, Swimming, Rock Climbing *(Agile Physical Therapy)*
+- **2026-06-07** — SomaTherapy: 2-3: 2TLS - Upper Limbs *(SomaVOYER)*
+- **2026-09-19** — DFA: Dynamic Foot and Ankle *(Institute of Physical Art (IPA))*
+- **2026-07-18** — SOP: Strategies for Optimizing Performance *(Institute of Physical Art (IPA))*
+- **2026-09-12** — Non-Therapist FR® Lower Limb Certification (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-12-10** — SomaTraining: 3-2: Proprioception & Awareness *(SomaVOYER)*
+- **2026-12-12** — SomaTraining: 2-2: Myofascial Stretching *(SomaVOYER)*
+- **2026-08-29** — Basic course "A" *(DNS / Prague School of Rehabilitation)*
+- **2026-09-11** — REM: Resistance Enhanced Manipulation *(Institute of Physical Art (IPA))*
+- **2026-08-07** — VFM: Visceral Functional Mobilization *(Institute of Physical Art (IPA))*
+- **2026-08-14** — Active Release Techniques (ART): Fascia Seminar *(Active Release Techniques)*
+- **2027-01-16** — DNS Intermediate Course "C" *(DNS / Prague School of Rehabilitation)*
+- **2026-09-25** — SomaTherapy: 1-3: 2TLS - Lower Limbs *(SomaVOYER)*
+- **2026-06-27** — KSC: Kinetic Shoulder Complex *(Institute of Physical Art (IPA))*
+- **2026-07-18** — Sacramento, CA Blood Flow Restriction Certification *(Integrated Movement Health / Cup Therapy)*
+- **2026-10-02** — DNS Basic Course "B" *(DNS / Prague School of Rehabilitation)*
+- **2026-11-14** — Level 1 & Level 2 Package *(Integrated Movement Health / Cup Therapy)*
+- **2026-10-03** — Non-Therapist FR® Upper Limb Certification (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-11-15** — Level 2 Advanced with MFD Precision Pump *(Integrated Movement Health / Cup Therapy)*
+- **2026-10-30** — Basic course "A" *(DNS / Prague School of Rehabilitation)*
+- **2026-08-14** — Active Release Techniques (ART): Lower Extremity Level 1 *(Active Release Techniques)*
+- **2026-10-09** — CFS: CoreFirst Strategies *(Institute of Physical Art (IPA))*
+- **2026-10-03** — FR® Upper Limb Certification (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-09-19** — KSC: Kinetic Shoulder Complex *(Institute of Physical Art (IPA))*
+- **2026-09-25** — FM I: Functional Mobilization I *(Institute of Physical Art (IPA))*
+- **2026-09-12** — FR® Lower Limb Certification (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-09-19** — CPTA Annual Conference 2026 — The Future of Movement *(California Physical Therapy Association (CPTA))*
+- **2026-08-21** — DNS Skills Course in Viscero-Somatic Patterns *(DNS / Prague School of Rehabilitation)*
+- **2026-10-30** — DNS Basic Course "A" *(DNS / Prague School of Rehabilitation)*
+- **2026-07-12** — Level 2 Advanced with MFD Precision Pump *(Integrated Movement Health / Cup Therapy)*
+- **2026-10-23** — FM I: Functional Mobilization I *(Institute of Physical Art (IPA))*
+- **2026-09-11** — ELDOA: ELDOA® 3 *(ELDOA)*
+- **2026-08-14** — ELDOA: ELDOA® 1&2 Combination *(ELDOA)*
+- **2026-10-24** — Postural Respiration *(Postural Restoration Institute (PRI))*
+- **2026-06-08** — DNS Skills Workshop *(DNS / Prague School of Rehabilitation)*
+- **2027-01-16** — Intermediate course "C" *(DNS / Prague School of Rehabilitation)*
+- **2026-07-11** — FRC® Certification Seminar (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2027-01-14** — Advanced DNS Skill Class: Kinesiological Analysis of Developmental Exercises *(DNS / Prague School of Rehabilitation)*
+- **2026-11-06** — ELDOA: ELDOA® 4 *(ELDOA)*
+- **2026-09-26** — AIB Vestibular Competency-Based Certification (in-person component) *(American Institute of Balance)*
+- **2026-10-09** — FMLT: Functional Mobilization Lower Trunk *(Institute of Physical Art (IPA))*
+- **2026-11-14** — Myokinematic Restoration *(Postural Restoration Institute (PRI))*
+- **2026-06-13** — PGP: The Pelvic Girdle Puzzle *(Institute of Physical Art (IPA))*
+- **2026-07-23** — SomaTraining: 1-1: Strengthening of the Abdominals & Thoracic Diaphragm *(SomaVOYER)*
+- **2027-03-19** — Basic course "B" *(DNS / Prague School of Rehabilitation)*
+- **2026-06-27** — Kinstretch® Level 1 Certification Seminar (WORLDWIDE) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-08-29** — Pelvic Function Level 2B (Satellite) *(Herman & Wallace Pelvic Rehabilitation Institute)*
+- **2026-06-13** — FR® Spine Certification (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2027-05-16** — Sports Movement Analysis: Cycling, Running, Lifting / Weight Training *(Agile Physical Therapy)*
+- **2026-06-13** — Sports Movement Analysis: Soccer / Cutting, Golf, Overhead Athletes *(Agile Physical Therapy)*
+- **2026-06-12** — FMLE: Functional Mobilization Lower Extremities *(Institute of Physical Art (IPA))*
+- **2026-06-13** — Level 1 with Full MFD Kit *(Integrated Movement Health / Cup Therapy)*
+- **2027-02-27** — Basic course "A" *(DNS / Prague School of Rehabilitation)*
+- **2026-09-18** — PNF: Functional Neuromuscular and Motor Control *(Institute of Physical Art (IPA))*
+- **2026-07-27** — DNS Skills Course on Scoliosis *(DNS / Prague School of Rehabilitation)*
+- **2026-12-04** — SomaTherapy: 3-3: 2TLS - Trunk & Pelvis *(SomaVOYER)*
+- **2026-06-06** — DNS Movement Performance Summit *(DNS / Prague School of Rehabilitation)*
+- **2026-06-19** — DNS Pediatric Course Part 1 *(DNS / Prague School of Rehabilitation)*
+- **2027-03-19** — DNS Basic Course "B" *(DNS / Prague School of Rehabilitation)*
+- **2026-10-03** — PGP: The Pelvic Girdle Puzzle *(Institute of Physical Art (IPA))*
+- **2026-07-24** — VFM: Visceral Functional Mobilization *(Institute of Physical Art (IPA))*
+- **2026-10-31** — KINSTRETCH® LEVEL II Certification (WORLDWIDE) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-10-03** — FRS Internal Strength Model® Certification Seminar (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-11-13** — FMUE: Functional Mobilization Upper Extremities *(Institute of Physical Art (IPA))*
+- **2026-07-18** — Blood Flow Restriction Certification *(Integrated Movement Health / Cup Therapy)*
+- **2026-07-30** — DNS Pediatric Course Part 2 *(DNS / Prague School of Rehabilitation)*
+- **2026-07-11** — Level 1 with Full MFD Kit *(Integrated Movement Health / Cup Therapy)*
+- **2026-11-07** — KSC: Kinetic Shoulder Complex *(Institute of Physical Art (IPA))*
+- **2026-09-26** — Pelvis Restoration *(Postural Restoration Institute (PRI))*
+- **2026-09-15** — Active Release Techniques (ART): Advanced Full Body Online *(Active Release Techniques)*
+- **2026-08-14** — ELDOA: ELDOA® 1&2 *(ELDOA)*
+- **2026-10-02** — Basic course "B" *(DNS / Prague School of Rehabilitation)*
+- **2026-08-29** — DNS Basic Course "A" *(DNS / Prague School of Rehabilitation)*
+- **2026-07-17** — CFS: CoreFirst Strategies *(Institute of Physical Art (IPA))*
+- **2026-08-22** — FRA® Certification Seminar (Worldwide) - ONLINE SEMINAR *(Functional Range Systems (FRS))*
+- **2026-07-24** — Active Release Techniques (ART): Upper Extremity Level 1 *(Active Release Techniques)*
+- **2026-11-06** — PNF: Functional Neuromuscular and Motor Control *(Institute of Physical Art (IPA))*
+- **2026-11-06** — PNF: Functional Neuromuscular and Motor Control *(Institute of Physical Art (IPA))*
+- **2026-11-14** — Level 1 with Full MFD Kit *(Integrated Movement Health / Cup Therapy)*
+- **2026-09-26** — Barbell Rehab Method Certification (BRM) *(Barbell Rehab)*
+- **2027-02-27** — DNS Basic Course "A" *(DNS / Prague School of Rehabilitation)*
+- **2026-09-18** — FMLE: Functional Mobilization Lower Extremities *(Institute of Physical Art (IPA))*
+- **2026-06-12** — CFS: CoreFirst Strategies *(Institute of Physical Art (IPA))*
+- **2026-07-23** — SomaTraining: 1-1: Strengthening of the Abdominals and Thoracic Diaphragm *(SomaVOYER)*
+- **2026-07-25** — SomaTraining: 3-1: Strengthening of the Upper Limb & Trunk *(SomaVOYER)*

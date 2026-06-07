@@ -248,6 +248,7 @@ class Course:
     audience: str = ""       # "PT, DC, ATC" etc., free-text
     pt_ceus: str = "unknown" # "yes" | "no" | "via reciprocity" | "unknown"
     pt_attendable: bool = True  # False = course is for non-PT discipline only; gets filtered out
+    specialties: list = field(default_factory=list)
     notes: str = ""
     discovered_at: str = ""  # ISO timestamp when first seen
     specialties: list[str] = field(default_factory=list)  # auto-tagged via classify_specialty()
@@ -435,8 +436,8 @@ def keep_for_listing(location_text: str) -> bool:
 SPECIALTY_KEYWORDS: dict[str, tuple[str, ...]] = {
     "neuro": (
         "stroke", "parkinson", "neuro", "vestibular", "concussion", "tbi",
-        "spinal cord", "neurological", "neuromuscular", "ndt", "pnf",
-        "movement disorder", "ms ", "multiple sclerosis", "ataxia",
+        "spinal cord", "neurological", "ndt", "pnf",
+        "movement disorder", "multiple sclerosis", "ataxia",
         "huntington", "cva", "hemiparesis",
     ),
     "pediatrics": (
@@ -473,7 +474,7 @@ SPECIALTY_KEYWORDS: dict[str, tuple[str, ...]] = {
         "memory care", "dementia", "lewy body", "frailty",
     ),
     "cardiopulm": (
-        "cardiac", "pulmonary", "cardiopulmonary", "icu", "covid",
+        "cardiac", "pulmonary", "cardiopulmonary", "intensive care", "covid",
         "respiratory", "lvad", "transplant", "copd",
     ),
     "pain": (
@@ -506,11 +507,55 @@ def classify_specialty(course: "Course") -> list[str]:
         (course.notes or "").lower(),
         (course.provider or "").lower(),
     ])
+    # "neuromuscular" is too broad (it appears in generic manual-therapy
+    # descriptions) and would otherwise tag courses as neuro via the "neuro"
+    # substring. Strip it so only specific neuro signals (stroke, parkinson,
+    # neurological, etc.) drive the neuro tag.
+    text = text.replace("neuromuscular", " ")
     if not text.strip():
         return []
     out: list[str] = []
     for tag, kws in SPECIALTY_KEYWORDS.items():
         if any(kw in text for kw in kws):
+            out.append(tag)
+    return out
+
+
+# Canonical specialty keys are the keys of SPECIALTY_KEYWORDS. Hand-coded Course
+# definitions historically used free-text variants (e.g. "orthopedic",
+# "pelvic floor", "neurology"). Map those variants to the canonical key so the
+# Specialty Index and per-course tags use ONE vocabulary.
+SPECIALTY_ALIASES: dict[str, str] = {
+    "orthopedic": "ortho",
+    "orthopaedic": "ortho",
+    "orthopedics": "ortho",
+    "orthopaedics": "ortho",
+    "neurology": "neuro",
+    "neurological": "neuro",
+    "pelvic floor": "pelvic",
+    "pelvic health": "pelvic",
+    "pain science": "pain",
+    "cardiopulmonary": "cardiopulm",
+    "cardiovascular": "cardiopulm",
+    "hands": "hand",
+    "hand therapy": "hand",
+    "pediatric": "pediatrics",
+    "peds": "pediatrics",
+}
+
+
+def normalize_specialty_tag(tag: str) -> str:
+    """Map a free-text specialty tag to its canonical key (lowercased)."""
+    t = (tag or "").strip().lower()
+    return SPECIALTY_ALIASES.get(t, t)
+
+
+def merge_specialties(existing: list[str], auto: list[str]) -> list[str]:
+    """Union of normalized hand-coded tags and auto-classified tags, deduped,
+    order-preserving (hand-coded first)."""
+    out: list[str] = []
+    for tag in [normalize_specialty_tag(t) for t in (existing or [])] + list(auto or []):
+        if tag and tag not in out:
             out.append(tag)
     return out
 
@@ -566,6 +611,18 @@ PT_PRIMARY_PROVIDERS = {
     "dns / prague school of rehabilitation",
     "prague school of rehabilitation",
     "rehab prague school",
+    "apta academy of pelvic health",
+    "noi group",
+    "explain pain",
+    "norton school of lymphatic therapy",
+    "prima education",
+    "rocabado institute",
+    "neuro-developmental treatment association",
+    "ndta",
+    "american society of hand therapists",
+    "asht",
+    "apta academy of cardiovascular",
+    "cardiopulmonary",
 }
 
 NON_PT_KEYWORDS = (
@@ -716,6 +773,7 @@ def scrape_active_release() -> list[Course]:
             url=course_url,
             audience="PT, DC, ATC, MD/DO",
             pt_ceus="yes",
+            specialties=["orthopedic", "sports"],
             notes="CA is on ART's approved-state list; verify exact CE hours on registration page.",
         ))
     return courses
@@ -764,6 +822,7 @@ def scrape_barbell_rehab() -> list[Course]:
             url=href,
             audience="PT, PTA, DC, ATC, S&C coaches, personal trainers, LMTs",
             pt_ceus="yes (CERS, CA PT board)",
+            specialties=["orthopedic", "sports"],
             notes=notes,
         ))
 
@@ -863,6 +922,7 @@ def scrape_mulligan() -> list[Course]:
             url=a.get("href", ""),
             audience="PT, OT",
             pt_ceus="yes",
+            specialties=["orthopedic"],
             notes="Mulligan Concept courses are typically CA PT board approved; verify on event page.",
         ))
     return courses
@@ -953,6 +1013,7 @@ def scrape_cup_therapy() -> list[Course]:
             url=href,
             audience="PT, ATC, LMT, PTA, OT, MD, DO, LAc",
             pt_ceus="yes",
+            specialties=["orthopedic"],
             notes=notes,
         ))
 
@@ -1085,6 +1146,7 @@ def scrape_agile_pt() -> list[Course]:
             url=url,
             audience="PT, sports rehab clinicians",
             pt_ceus="yes",
+            specialties=["orthopedic", "sports"],
             notes="Confirm CERS approval at registration. Each day-package "
                   "bundles online lecture + in-person lab at Palo Alto.",
         ))
@@ -1210,6 +1272,7 @@ def scrape_cpta() -> list[Course]:
             url=src_url,
             audience="PT, PTA, students",
             pt_ceus="yes",
+            specialties=["orthopedic"],
             notes=notes or "CPTA-provided CE — CERS-approved for CA PTs.",
         ))
 
@@ -1370,6 +1433,7 @@ def scrape_ucsf() -> list[Course]:
             url=url,
             audience="PT and allied health",
             pt_ceus="yes",
+            specialties=["orthopedic"],
             notes="UCSF DPT-hosted CE typically carries CA PT approval.",
         ))
     return courses
@@ -1411,6 +1475,7 @@ def scrape_pri() -> list[Course]:
             url=base_url,
             audience="PT, PTA, OT, DC, ATC, S&C, LMT, Pilates instructors",
             pt_ceus="via reciprocity",
+            specialties=["orthopedic"],
             notes="PRI courses are PT board approved with reciprocity in AZ, CO, OR, WA "
                   "and many other states; CA requires self-submission. Verify per course.",
         ))
@@ -1523,6 +1588,7 @@ def scrape_ipa() -> list[Course]:
             url=base_url,
             audience="PT, PTA (FMT system)",
             pt_ceus="yes",
+            specialties=["orthopedic"],
             notes="IPA courses count toward CFMT Certification and IPA Residency/Fellowship.",
         ))
     return courses
@@ -1591,6 +1657,7 @@ def scrape_herman_wallace() -> list[Course]:
             url=base_url,
             audience="PT, PTA, OT, OTA, RN, NP, midwives",
             pt_ceus="yes",
+            specialties=["pelvic floor"],
             notes="Satellite format: remote lectures + hosted in-person lab. H&W "
                   "publishes new satellite dates ~3-6 months out.",
         ))
@@ -1627,6 +1694,7 @@ def scrape_wilk() -> list[Course]:
             url=base_url,
             audience="PT, PTA, ATC, MD, OT",
             pt_ceus="yes",
+            specialties=["orthopedic", "sports"],
         ))
     return courses
 
@@ -1665,6 +1733,7 @@ def scrape_vestibular() -> list[Course]:
             url=url,
             audience="PT, PTA, AuD, MD",
             pt_ceus="yes",
+            specialties=["vestibular", "neurology"],
             notes=notes,
         ))
     return courses
@@ -1910,6 +1979,7 @@ def scrape_fms() -> list[Course]:
             url=events_url,
             audience="PT, PTA, ATC, DC, S&C, personal trainers",
             pt_ceus="yes",
+            specialties=["orthopedic", "sports"],
             notes="FMS courses are CEU-approved in most US states; verify CA "
                   "PT board status before registering.",
         ))
@@ -2158,6 +2228,7 @@ def scrape_amsi() -> list[Course]:
                 url=product_url,
                 audience="PT, OT, PTA, ATC, MD, DC, Acupuncturists",
                 pt_ceus="yes",
+                specialties=["orthopedic", "sports"],
                 notes="FSBPT-credentialed (28 CEUs), BOC (20 1A credits), "
                       "Texas board (26 CCUs); local-board self-submission "
                       "supported.",
@@ -2178,6 +2249,7 @@ def scrape_amsi() -> list[Course]:
             url=store_url,
             audience="PT, OT, PTA, ATC, MD, DC, Acupuncturists",
             pt_ceus="yes",
+            specialties=["orthopedic"],
             notes="FSBPT-credentialed (28 CEUs).",
         ))
     return courses
@@ -2387,6 +2459,7 @@ def _make_aamt_course(title: str, iso_start: str, iso_end: str,
         url=url,
         audience="PT, DC, ATC, MD (osteopractic cert track)",
         pt_ceus="yes",
+        specialties=["orthopedic"],
         notes="AAMT courses count toward the Diploma in Osteopractic; "
               "verify CA PT board status by self-submission.",
     )
@@ -2514,6 +2587,7 @@ def scrape_eldoa() -> list[Course]:
             url=src_url,
             audience="PT, DC, ATC, S&C, Pilates, yoga, MD/DO",
             pt_ceus="yes (self-submit; NSCA CEU-approved at minimum)",
+            specialties=["orthopedic", "sports"],
             notes="Cross-disciplinary movement education. CA PTs typically "
                   "self-submit; NSCA CEUs are standard. Verify with the host "
                   "instructor before registering.",
@@ -2751,6 +2825,7 @@ def scrape_northeast_seminars() -> list[Course]:
                 url=url,
                 audience="PT, PTA, ATC, OT, MD",
                 pt_ceus="yes (state-by-state — see each course page)",
+                specialties=["orthopedic", "sports"],
                 notes="NE Seminars has been an APTA / state-PT-board approved CE "
                       "provider since 1981. CA recognition typically by self-submission.",
             ))
@@ -2848,6 +2923,7 @@ def scrape_frs() -> list[Course]:
                 url=href,
                 audience=audience,
                 pt_ceus="varies — verify per course page",
+                specialties=["orthopedic", "sports"],
                 notes="Dr. Andreo Spina's FRS curriculum. Many events are online "
                       "(filtered out here). Most in-person CA dates run as private "
                       "host events; check the public calendar if a CA seminar appears.",
@@ -2908,6 +2984,7 @@ def scrape_painfree() -> list[Course]:
             url=href,
             audience="PT, DC, ATC, S&C, personal trainers, fitness pros",
             pt_ceus="yes (self-submit to CA PT board)",
+            specialties=["orthopedic", "sports"],
             notes="PPSC: 2-day live cert. NSCA + NASM/AFAA/ACE CEUs. CA PTs "
                   "typically self-submit syllabus to PTBC.",
         ))
@@ -3051,6 +3128,7 @@ def scrape_dns() -> list[Course]:
             url=href,
             audience="PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
             pt_ceus="yes (self-submit syllabus to CA PTBC)",
+            specialties=["orthopedic"],
             notes="DNS = Dynamic Neuromuscular Stabilization (Kolar method). "
                   "International curriculum; US courses run by certified DNS "
                   "instructors. CA PT CEU via self-submission.",
@@ -3451,20 +3529,33 @@ def scrape_state_board_ce_list(state: str) -> list[Course]:
 # To add a new (state, query) target, append a tuple to EVENTBRITE_QUERIES.
 # ----------------------------------------------------------------------------
 
+# Eventbrite is DISABLED — it returns mostly off-topic wellness events that the
+# whitelist filters to zero, while costing ~70s/run (9 queries x 4 metros). The
+# scraper code below is left intact; to re-enable, un-comment any (state, query)
+# tuples. Each query registers as its own provider via the loop further down.
 EVENTBRITE_QUERIES: list[tuple[str, str]] = [
     # (state-code, query-slug). Slugs use hyphens, no spaces.
-    # CA-only policy: only California targets are scraped. To broaden scope,
-    # add tuples like ("or", "physical-therapy-continuing-education").
-    ("ca", "physical-therapy-continuing-education"),
-    ("ca", "manual-therapy"),
-    ("ca", "dry-needling-course"),
+    # CA-only policy: only California targets are scraped.
+    # ("ca", "physical-therapy-continuing-education"),
+    # ("ca", "manual-therapy"),
+    # ("ca", "dry-needling-course"),
     # Specialty-focused discovery queries
-    ("ca", "pelvic-floor-physical-therapy"),
-    ("ca", "lymphedema-certification"),
-    ("ca", "pediatric-physical-therapy"),
-    ("ca", "neuro-rehabilitation"),
-    ("ca", "vestibular-rehabilitation"),
+    # ("ca", "pelvic-floor-physical-therapy"),
+    # ("ca", "lymphedema-certification"),
+    # ("ca", "pediatric-physical-therapy"),
+    # ("ca", "neuro-rehabilitation"),
+    # ("ca", "vestibular-rehabilitation"),
 ]
+
+# Eventbrite requires a CITY-qualified location slug; a bare state slug
+# ("/d/ca/...") returns 404. For state "ca" we query each major California
+# metro and merge the results. Add metros here to widen coverage.
+EVENTBRITE_CA_METROS = (
+    "ca--los-angeles",
+    "ca--san-diego",
+    "ca--san-francisco",
+    "ca--sacramento",
+)
 
 EVENTBRITE_TITLE_WHITELIST = (
     "physical therap", "manual therap", "dry needling", "rehab",
@@ -3497,21 +3588,35 @@ def scrape_eventbrite_query(query: str, state: str) -> list[Course]:
     """
     state_code = state.lower().strip()
     query_slug = re.sub(r"\s+", "-", query.strip().strip("/").lower())
-    url = f"https://www.eventbrite.com/d/{state_code}/{query_slug}/"
 
-    html = http_get(url, allow_playwright_fallback=True)
-    if not html:
-        log(f"  eventbrite ({state}/{query}): no HTML from {url}")
-        return []
+    # A bare state slug 404s on Eventbrite; query each CA metro and merge.
+    if state_code == "ca":
+        location_slugs = list(EVENTBRITE_CA_METROS)
+    else:
+        location_slugs = [state_code]
 
-    soup = BeautifulSoup(html, "html.parser")
+    # Representative URL for fallback links / debug dumps.
+    url = f"https://www.eventbrite.com/d/{location_slugs[0]}/{query_slug}/"
+
     raw_events: list[dict] = []
-    for script in soup.find_all("script", type="application/ld+json"):
-        try:
-            data = json.loads(script.string or "{}")
-        except (json.JSONDecodeError, AttributeError, TypeError):
+    html = None
+    for loc in location_slugs:
+        page_url = f"https://www.eventbrite.com/d/{loc}/{query_slug}/"
+        html = http_get(page_url, allow_playwright_fallback=True)
+        if not html:
+            log(f"  eventbrite ({loc}/{query}): no HTML from {page_url}")
             continue
-        raw_events.extend(_extract_events_from_jsonld(data))
+        soup = BeautifulSoup(html, "html.parser")
+        for script in soup.find_all("script", type="application/ld+json"):
+            try:
+                data = json.loads(script.string or "{}")
+            except (json.JSONDecodeError, AttributeError, TypeError):
+                continue
+            raw_events.extend(_extract_events_from_jsonld(data))
+
+    if not raw_events:
+        log(f"  eventbrite (ca/{query}): no events from {len(location_slugs)} metro(s)")
+        return []
 
     provider_name = f"Eventbrite ({query.replace('-', ' ')})"
     courses: list[Course] = []
@@ -3737,6 +3842,7 @@ def scrape_usc() -> list[Course]:
             url=course_url,
             audience="PT, PTA",
             pt_ceus="yes",
+	    specialties=["orthopedic", "sports"],
             notes=notes,
         ))
 
@@ -3832,6 +3938,477 @@ def scrape_cpta_approved_list() -> list[Course]:
     return courses
 
 
+# ----------------------------------------------------------------------------
+# Pelvic Health — APTA Academy of Pelvic Health Physical Therapy
+# ----------------------------------------------------------------------------
+
+def scrape_pelvic_health() -> list[Course]:
+    """APTA Pelvic Health Academy courses — CA in-person dates.
+
+    The APTA Pelvic Health Academy (formerly Section on Women's Health) hosts
+    live continuing education courses, residency programs, and the Certificate
+    of Achievement in Pelvic Physical Therapy (CAPP).
+
+    Live calendar: https://www.aptapelvichealth.org/events/
+    Most courses require APTA membership login to register, but the calendar
+    is publicly visible.
+    """
+    SEED_PELVIC_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location)
+        # Add confirmed CA dates here as they are announced.
+        # Example:
+        # ("2026-10-03", "2026-10-05",
+        #  "CAPP-Obstetrics: Peripartum Physical Therapy",
+        #  "San Diego, CA"),
+    ]
+
+    courses: list[Course] = []
+
+    # Live fetch attempt
+    url = "https://www.aptapelvichealth.org/events/"
+    html = http_get(url)
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for item in soup.find_all(["article", "div", "li"],
+                                   class_=re.compile(r"course|event|listing", re.I)):
+            text = item.get_text(" ", strip=True)
+            if not in_radius(text):
+                continue
+            iso = parse_date_loose(text)
+            if not iso:
+                continue
+            title_el = item.find(["h2", "h3", "h4", "a", "strong"])
+            title = title_el.get_text(strip=True) if title_el else "Pelvic Health Course"
+            link_el = item.find("a", href=True)
+            link = link_el["href"] if link_el else url
+            courses.append(Course(
+                course_id=make_course_id("APTA-Pelvic", title, iso, text[:40]),
+                provider="APTA Academy of Pelvic Health PT",
+                title=title,
+                start_date=iso,
+                location=text[:60],
+                url=link,
+                audience="PT, PTA",
+                pt_ceus="yes",
+                specialties=["pelvic floor"],
+                notes="APTA-approved. Counts toward CAPP certification.",
+            ))
+        log(f"  Pelvic/APTA: parsed {len(courses)} CA entries from live page")
+    else:
+        log("  Pelvic/APTA: live fetch failed — using seed list only")
+
+    for iso_start, iso_end, title, loc in SEED_PELVIC_2026:
+        courses.append(Course(
+            course_id=make_course_id("APTA-Pelvic", title, iso_start, loc),
+            provider="APTA Academy of Pelvic Health PT",
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url="https://www.aptapelvichealth.org/events/",
+            audience="PT, PTA",
+            pt_ceus="yes",
+            specialties=["pelvic floor"],
+            notes="Verify dates at aptapelvichealth.org.",
+        ))
+    return courses
+
+
+# ----------------------------------------------------------------------------
+# Pain Science / Chronic Pain — NOI Group (Explain Pain) + Moseley/Butler
+# ----------------------------------------------------------------------------
+
+def scrape_pain_science() -> list[Course]:
+    """Pain science and chronic pain management — NOI Group (Lorimer Moseley
+    and David Butler's organization), Explain Pain courses, and Graded Motor
+    Imagery (GMI) certification.
+
+    Live calendar: https://www.noigroup.com/education/
+    NOI courses are the gold standard for evidence-based chronic pain PT education.
+    """
+    SEED_PAIN_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location)
+        # Add confirmed CA dates here.
+        # Example:
+        # ("2026-09-19", "2026-09-20",
+        #  "Explain Pain Immersion — 2-Day Intensive",
+        #  "Los Angeles, CA"),
+        # ("2026-11-14", "2026-11-15",
+        #  "Graded Motor Imagery (GMI) Certification",
+        #  "San Francisco, CA"),
+    ]
+
+    courses: list[Course] = []
+
+    # Live fetch from NOI Group
+    noi_url = "https://www.noigroup.com/education/"
+    html = http_get(noi_url)
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for item in soup.find_all(["article", "div", "li", "tr"],
+                                   class_=re.compile(r"course|event|item|workshop", re.I)):
+            text = item.get_text(" ", strip=True)
+            if not in_radius(text):
+                continue
+            iso = parse_date_loose(text)
+            if not iso:
+                continue
+            title_el = item.find(["h2", "h3", "h4", "a", "strong"])
+            title = title_el.get_text(strip=True) if title_el else "Explain Pain / NOI Course"
+            link_el = item.find("a", href=True)
+            link = link_el["href"] if link_el else noi_url
+            courses.append(Course(
+                course_id=make_course_id("NOI", title, iso, text[:40]),
+                provider="NOI Group (Explain Pain)",
+                title=title,
+                start_date=iso,
+                location=text[:60],
+                url=link,
+                audience="PT, PTA, MD, DC, OT, psychologists",
+                pt_ceus="yes",
+                specialties=["pain science"],
+                notes="Moseley/Butler method. FSBPT-approved in most states. "
+                      "Core content for chronic pain management.",
+            ))
+        log(f"  Pain Science/NOI: parsed {len(courses)} CA entries")
+    else:
+        log("  Pain Science/NOI: live fetch failed — using seed list only")
+
+    # Seed entries
+    for iso_start, iso_end, title, loc in SEED_PAIN_2026:
+        courses.append(Course(
+            course_id=make_course_id("NOI", title, iso_start, loc),
+            provider="NOI Group (Explain Pain)",
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url=noi_url,
+            audience="PT, PTA, MD, DC, OT",
+            pt_ceus="yes",
+            specialties=["pain science"],
+            notes="Explain Pain / GMI course. Verify CA PT board CEU status.",
+        ))
+    return courses
+
+
+# ----------------------------------------------------------------------------
+# Lymphedema — Norton School of Lymphatic Therapy (LANA-approved)
+# ----------------------------------------------------------------------------
+
+def scrape_lymphedema() -> list[Course]:
+    """Norton School of Lymphatic Therapy — CA in-person CDT courses.
+
+    Norton is the largest LANA-approved Complete Decongestive Therapy (CDT)
+    provider in the US. The 40-hour certification is the pathway to CLT-LANA.
+
+    Live schedule: https://www.nortonschool.com/schedule/
+    """
+    SEED_LYMPH_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location)
+        # Add confirmed CA dates here.
+        # Example:
+        # ("2026-10-05", "2026-10-09",
+        #  "Complete Decongestive Therapy (CDT) — 40hr Certification",
+        #  "Los Angeles, CA"),
+    ]
+
+    courses: list[Course] = []
+    url = "https://www.nortonschool.com/schedule/"
+    html = http_get(url)
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for row in soup.find_all(["tr", "li", "div"],
+                                  class_=re.compile(r"course|event|row|item", re.I)):
+            text = row.get_text(" ", strip=True)
+            if not in_radius(text):
+                continue
+            iso = parse_date_loose(text)
+            if not iso:
+                continue
+            title_el = row.find(["td", "a", "strong", "h3"])
+            title = title_el.get_text(strip=True) if title_el else "CDT Certification Course"
+            courses.append(Course(
+                course_id=make_course_id("Norton", title, iso, text[:40]),
+                provider="Norton School of Lymphatic Therapy",
+                title=title,
+                start_date=iso,
+                location=text[:60],
+                url=url,
+                audience="PT, OT, PTA, COTA, RN, MD",
+                pt_ceus="yes",
+                specialties=["lymphedema"],
+                notes="LANA-approved CDT course. 40hr cert required for CLT-LANA exam.",
+            ))
+        log(f"  Lymphedema/Norton: parsed {len(courses)} CA entries")
+    else:
+        log("  Lymphedema/Norton: fetch failed — using seed list only")
+
+    for iso_start, iso_end, title, loc in SEED_LYMPH_2026:
+        courses.append(Course(
+            course_id=make_course_id("Norton", title, iso_start, loc),
+            provider="Norton School of Lymphatic Therapy",
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url=url,
+            audience="PT, OT, PTA, COTA, RN, MD",
+            pt_ceus="yes",
+            specialties=["lymphedema"],
+            notes="Verify dates at nortonschool.com/schedule.",
+        ))
+    return courses
+
+
+# ----------------------------------------------------------------------------
+# TMJ / Craniofacial — PRIMA Education + Rocabado Institute
+# ----------------------------------------------------------------------------
+
+def scrape_tmj() -> list[Course]:
+    """TMJ and craniofacial PT — PRIMA Education (licensed Rocabado curriculum).
+
+    Rocabado & Iglarsh is the gold standard for PT-specific TMJ education.
+    Live calendar: https://www.treatingtmj.com/tmd-course-schedule/
+    (The former primaeducation.com / rocabado.com domains are now parked.)
+    """
+    SEED_TMJ_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location)
+        # Example:
+        # ("2026-11-07", "2026-11-09",
+        #  "Cervical Spine and Temporomandibular Joint",
+        #  "San Diego, CA"),
+    ]
+
+    courses: list[Course] = []
+    for url, provider_name in [
+        ("https://www.treatingtmj.com/tmd-course-schedule/",
+         "Treating TMJ (TMD & Craniofacial Pain)"),
+    ]:
+        html = http_get(url)
+        if not html:
+            log(f"  TMJ/{provider_name}: fetch failed")
+            continue
+        soup = BeautifulSoup(html, "html.parser")
+        for item in soup.find_all(["article", "li", "tr", "div"],
+                                   class_=re.compile(r"course|event|item", re.I)):
+            text = item.get_text(" ", strip=True)
+            if not in_radius(text):
+                continue
+            iso = parse_date_loose(text)
+            if not iso:
+                continue
+            title_el = item.find(["h2", "h3", "h4", "a", "strong"])
+            title = title_el.get_text(strip=True) if title_el else "TMJ Course"
+            link_el = item.find("a", href=True)
+            link = link_el["href"] if link_el else url
+            courses.append(Course(
+                course_id=make_course_id(provider_name, title, iso, text[:40]),
+                provider=provider_name,
+                title=title,
+                start_date=iso,
+                location=text[:60],
+                url=link,
+                audience="PT, PTA, DC, DO",
+                pt_ceus="yes",
+                specialties=["tmj", "orthopedics"],
+                notes="Rocabado method. CA PT board accepts via CERS.",
+            ))
+        log(f"  TMJ/{provider_name}: parsed {len(courses)} CA entries")
+
+    for iso_start, iso_end, title, loc in SEED_TMJ_2026:
+        courses.append(Course(
+            course_id=make_course_id("PRIMA", title, iso_start, loc),
+            provider="PRIMA Education",
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url="https://www.treatingtmj.com/tmd-course-schedule/",
+            audience="PT, PTA, DC, DO",
+            pt_ceus="yes",
+            specialties=["tmj", "orthopedics"],
+            notes="Verify dates at treatingtmj.com.",
+        ))
+    return courses
+
+
+# ----------------------------------------------------------------------------
+# Pediatric PT — Neuro-Developmental Treatment Association (NDTA)
+# ----------------------------------------------------------------------------
+
+def scrape_pediatric_pt() -> list[Course]:
+    """NDT/Bobath pediatric courses — CA in-person dates.
+    Live calendar: https://www.ndta.org/site/education-chalkboard
+    """
+    SEED_PEDS_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location, provider, url, notes)
+        # Example:
+        # ("2026-09-12", "2026-09-14", "NDT/Bobath Baby Course",
+        #  "Los Angeles, CA", "NDTA",
+        #  "https://www.ndta.org/site/education-chalkboard",
+        #  "18 contact hours. Verify CA PT board CEU acceptance."),
+    ]
+
+    courses: list[Course] = []
+    ndta_url = "https://www.ndta.org/site/education-chalkboard"
+    html = http_get(ndta_url)
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for item in soup.find_all(["article", "div", "li"],
+                                   class_=re.compile(r"course|event|listing", re.I)):
+            text = item.get_text(" ", strip=True)
+            if not in_radius(text):
+                continue
+            iso = parse_date_loose(text)
+            if not iso:
+                continue
+            title_el = item.find(["h2", "h3", "h4", "a"])
+            title = title_el.get_text(strip=True) if title_el else "NDT/Bobath Course"
+            link_el = item.find("a", href=True)
+            link = link_el["href"] if link_el else ndta_url
+            courses.append(Course(
+                course_id=make_course_id("NDTA", title, iso, text[:40]),
+                provider="Neuro-Developmental Treatment Association (NDTA)",
+                title=title,
+                start_date=iso,
+                location=text[:60],
+                url=link,
+                audience="PT, PTA, OT, COTA, SLP",
+                pt_ceus="yes",
+                specialties=["pediatrics", "neurology"],
+                notes="NDT/Bobath method. Verify CA PT board acceptance.",
+            ))
+        log(f"  Pediatric/NDTA: parsed {len(courses)} CA entries")
+    else:
+        log("  Pediatric/NDTA: fetch failed — using seed list only")
+
+    for entry in SEED_PEDS_2026:
+        iso_start, iso_end, title, loc, provider, url, notes = entry
+        courses.append(Course(
+            course_id=make_course_id(provider, title, iso_start, loc),
+            provider=provider,
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url=url,
+            audience="PT, PTA, OT, COTA",
+            pt_ceus="yes",
+            specialties=["pediatrics", "neurology"],
+            notes=notes,
+        ))
+    return courses
+
+
+# ----------------------------------------------------------------------------
+# Hand Therapy — American Society of Hand Therapists (ASHT)
+# ----------------------------------------------------------------------------
+
+def scrape_hand_therapy() -> list[Course]:
+    """ASHT and CHT-track hand therapy courses — CA in-person dates.
+    Live calendar: https://www.asht.org/education/events
+    """
+    SEED_HANDS_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location)
+        # Example:
+        # ("2026-10-15", "2026-10-16",
+        #  "ASHT Annual Meeting Pre-Conference Workshop",
+        #  "San Diego, CA"),
+    ]
+
+    courses: list[Course] = []
+    asht_url = "https://www.asht.org/education/events"
+    html = http_get(asht_url)
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        for item in soup.find_all(["article", "div", "li", "tr"],
+                                   class_=re.compile(r"course|event|listing|item", re.I)):
+            text = item.get_text(" ", strip=True)
+            if not in_radius(text):
+                continue
+            iso = parse_date_loose(text)
+            if not iso:
+                continue
+            title_el = item.find(["h2", "h3", "h4", "a", "strong"])
+            title = title_el.get_text(strip=True) if title_el else "Hand Therapy Course"
+            link_el = item.find("a", href=True)
+            link = link_el["href"] if link_el else asht_url
+            courses.append(Course(
+                course_id=make_course_id("ASHT", title, iso, text[:40]),
+                provider="American Society of Hand Therapists (ASHT)",
+                title=title,
+                start_date=iso,
+                location=text[:60],
+                url=link,
+                audience="PT, OT, PTA, COTA",
+                pt_ceus="yes",
+                specialties=["hands", "orthopedics"],
+                notes="ASHT-approved. PT CEUs via FSBPT or CA CERS.",
+            ))
+        log(f"  Hand Therapy/ASHT: parsed {len(courses)} CA entries")
+    else:
+        log("  Hand Therapy/ASHT: fetch failed — using seed list only")
+
+    for iso_start, iso_end, title, loc in SEED_HANDS_2026:
+        courses.append(Course(
+            course_id=make_course_id("ASHT", title, iso_start, loc),
+            provider="American Society of Hand Therapists (ASHT)",
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url=asht_url,
+            audience="PT, OT, PTA, COTA",
+            pt_ceus="yes",
+            specialties=["hands", "orthopedics"],
+            notes="Verify CA PT board CEU status at asht.org.",
+        ))
+    return courses
+
+
+# ----------------------------------------------------------------------------
+# Cardiopulmonary PT — APTA Academy of Cardiovascular & Pulmonary PT
+# ----------------------------------------------------------------------------
+
+def scrape_cardiopulmonary_pt() -> list[Course]:
+    """Cardiopulmonary PT — acute care, cardiac rehab, ICU PT courses.
+
+    Most cardiopulmonary PT CEU content is online or hybrid. This scraper
+    seeds confirmed CA in-person dates only.
+    Add dates to SEED_CARDIO_2026 as you find them at:
+    https://www.aptacvp.org/events
+    """
+    SEED_CARDIO_2026: list[tuple] = [
+        # Format: (start_date, end_date, title, location)
+        # Example:
+        # ("2026-08-22", "2026-08-23",
+        #  "Acute Care and ICU PT — Intensive Weekend",
+        #  "Los Angeles, CA"),
+    ]
+
+    courses: list[Course] = []
+    for iso_start, iso_end, title, loc in SEED_CARDIO_2026:
+        courses.append(Course(
+            course_id=make_course_id("APTA-Cardio", title, iso_start, loc),
+            provider="APTA Academy of Cardiovascular & Pulmonary PT",
+            title=title,
+            start_date=iso_start,
+            end_date=iso_end,
+            location=loc,
+            url="https://www.aptacvp.org/events",
+            audience="PT, PTA",
+            pt_ceus="yes",
+            specialties=["cardiopulmonary"],
+            notes="Verify CA PT board CEU acceptance.",
+        ))
+
+    if not courses:
+        log("  Cardiopulmonary: 0 seeded entries. Add CA dates to "
+            "SEED_CARDIO_2026. Check https://www.aptacvp.org/events")
+    return courses
+
+
 # Register all scrapers here.
 PROVIDERS: dict[str, Callable[[], list[Course]]] = {
     "art": scrape_active_release,
@@ -3855,8 +4432,14 @@ PROVIDERS: dict[str, Callable[[], list[Course]]] = {
     "frs": scrape_frs,
     "painfree": scrape_painfree,
     "dns": scrape_dns,
-    "usc": scrape_usc,
-    "cpta_approved": scrape_cpta_approved_list,
+    # --- New specialty providers (added June 2026) ---
+    "pelvic_apta": scrape_pelvic_health,
+    "pain_science": scrape_pain_science,
+    "lymphedema": scrape_lymphedema,
+    "tmj": scrape_tmj,
+    "pediatrics": scrape_pediatric_pt,
+    "hands": scrape_hand_therapy,
+    "cardiopulmonary": scrape_cardiopulmonary_pt,
 }
 
 # Register each configured APTA state chapter as its own provider key:
@@ -4119,10 +4702,11 @@ def run(only_provider: str | None = None, notify: bool = False) -> int:
             dropped = len(in_window) - len(pt_attendable)
             if dropped:
                 log(f"   dropped {dropped} non-PT-attendable courses")
-            # Auto-tag specialties (idempotent; safe to re-run).
+            # Tag specialties: normalize any hand-coded tags to the canonical
+            # vocabulary and merge in keyword-based auto-classification.
+            # Idempotent; safe to re-run.
             for c in pt_attendable:
-                if not c.specialties:
-                    c.specialties = classify_specialty(c)
+                c.specialties = merge_specialties(c.specialties, classify_specialty(c))
             all_courses.extend(pt_attendable)
         except Exception as e:
             log(f"   ERROR: {e}")
