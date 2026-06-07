@@ -16,24 +16,6 @@
     "title": "Skills Course in Viscero-Somatic Patterns",
     "url": "course.php?c_id=4004"
   },
-  "01564232b42d": {
-    "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
-    "course_id": "01564232b42d",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-07",
-    "location": "Stanford, CA",
-    "notes": "DNS = Dynamic Neuromuscular Stabilization (Kolar method). International curriculum; US courses run by certified DNS instructors. CA PT CEU via self-submission.",
-    "provider": "DNS / Prague School of Rehabilitation",
-    "pt_attendable": true,
-    "pt_ceus": "yes (self-submit syllabus to CA PTBC)",
-    "specialties": [
-      "ortho",
-      "sports"
-    ],
-    "start_date": "2026-06-06",
-    "title": "DNS Movement Performance Summit",
-    "url": "course.php?c_id=3815"
-  },
   "0417be6b8304": {
     "audience": "PT, PTA (FMT system)",
     "course_id": "0417be6b8304",
@@ -1289,23 +1271,6 @@
     "start_date": "2026-06-13",
     "title": "PGP: The Pelvic Girdle Puzzle",
     "url": "https://instituteofphysicalart.com/scheduled-courses/"
-  },
-  "be566412ebe3": {
-    "audience": "PT, PTA",
-    "course_id": "be566412ebe3",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-07",
-    "location": "Burlingame, CA",
-    "notes": "Approved for 16.5 CEUs in CA (CERS) and most other states by reciprocity.",
-    "provider": "Great Lakes Seminars (GLS)",
-    "pt_attendable": true,
-    "pt_ceus": "yes",
-    "specialties": [
-      "ortho"
-    ],
-    "start_date": "2026-06-06",
-    "title": "Mobilization of the Cervical and Thoracic Spine and Ribs",
-    "url": "https://glseminars.com/courses/view-schedule/"
   },
   "c0b04d941b3c": {
     "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
