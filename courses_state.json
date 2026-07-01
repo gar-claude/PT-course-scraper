@@ -137,22 +137,23 @@
     "title": "Level 1 with Full MFD Kit",
     "url": "https://www.cuptherapy.com/product-page/san-francisco-ca-level-1-with-full-mfd-kit-1"
   },
-  "19cd5c126ea1": {
-    "audience": "PT, ATC, LMT, PTA, OT, MD, DO, LAc",
-    "course_id": "19cd5c126ea1",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "",
-    "location": "San Diego, CA",
-    "notes": "Provider lists CA PT board reciprocity (CERS-route); FSBPT-credentialed in most states. Verify level (L1/L2/BFR) and hours on product page.",
-    "provider": "Integrated Movement Health / Cup Therapy",
+  "19b75b362cf8": {
+    "audience": "PT, DC, ATC, MD (manual therapists only)",
+    "course_id": "19b75b362cf8",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "2026-11-14",
+    "location": "ONLINE SEMINAR",
+    "notes": "Dr. Andreo Spina's FRS curriculum. Many events are online (filtered out here). Most in-person CA dates run as private host events; check the public calendar if a CA seminar appears.",
+    "provider": "Functional Range Systems (FRS)",
     "pt_attendable": true,
-    "pt_ceus": "yes",
+    "pt_ceus": "varies \u2014 verify per course page",
     "specialties": [
-      "ortho"
+      "ortho",
+      "sports"
     ],
-    "start_date": "2026-06-14",
-    "title": "Level 2 Advanced with MFD Precision Pump",
-    "url": "https://www.cuptherapy.com/product-page/san-diego-level-2-advanced-with-mfd-precision-pump"
+    "start_date": "2026-11-14",
+    "title": "FR\u00ae Spine Certification (Worldwide) - ONLINE SEMINAR",
+    "url": "https://functionalanatomyseminars.com/event-registration/?ee=1088"
   },
   "20341e1aaf9c": {
     "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
@@ -243,6 +244,42 @@
     "title": "Active Release Techniques (ART): Fascia Seminar",
     "url": "https://education.activerelease.com/p/fascia?instance=695d756aeb45b1947304e6fb"
   },
+  "30b4470c09b8": {
+    "audience": "PT, DC, ATC, S&C, Pilates, yoga, MD/DO",
+    "course_id": "30b4470c09b8",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "2026-09-19",
+    "location": "ONLINE SEMINAR",
+    "notes": "Dr. Andreo Spina's FRS curriculum. Many events are online (filtered out here). Most in-person CA dates run as private host events; check the public calendar if a CA seminar appears.",
+    "provider": "Functional Range Systems (FRS)",
+    "pt_attendable": true,
+    "pt_ceus": "varies \u2014 verify per course page",
+    "specialties": [
+      "ortho",
+      "sports"
+    ],
+    "start_date": "2026-09-19",
+    "title": "Kinstretch\u00ae Level 1 Certification Seminar (WORLDWIDE) - ONLINE SEMINAR",
+    "url": "https://functionalanatomyseminars.com/event-registration/?ee=1087"
+  },
+  "31a9928fb14e": {
+    "audience": "PT, sports rehab clinicians",
+    "course_id": "31a9928fb14e",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "2027-06-13",
+    "location": "Agile PT, 3825 El Camino Real, Palo Alto, CA 94306",
+    "notes": "Confirm CERS approval at registration. Each day-package bundles online lecture + in-person lab at Palo Alto.",
+    "provider": "Agile Physical Therapy",
+    "pt_attendable": true,
+    "pt_ceus": "yes",
+    "specialties": [
+      "ortho",
+      "sports"
+    ],
+    "start_date": "2027-06-13",
+    "title": "Sports Movement Analysis: Soccer / Cutting, Golf, Overhead Athletes",
+    "url": "https://agilept.com/education/continuing-education/"
+  },
   "3725b417e951": {
     "audience": "PT, ATC, LMT, PTA, OT, MD, DO, LAc",
     "course_id": "3725b417e951",
@@ -259,24 +296,6 @@
     "start_date": "2026-11-14",
     "title": "Level 1 & Level 2 Package",
     "url": "https://www.cuptherapy.com/product-page/laguna-niguel-ca-level-1-level-2-package"
-  },
-  "385fc26e24ac": {
-    "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
-    "course_id": "385fc26e24ac",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-21",
-    "location": "Pasadena, CA",
-    "notes": "DNS = Dynamic Neuromuscular Stabilization (Kolar method). International curriculum; US courses run by certified DNS instructors. CA PT CEU via self-submission.",
-    "provider": "DNS / Prague School of Rehabilitation",
-    "pt_attendable": true,
-    "pt_ceus": "yes (self-submit syllabus to CA PTBC)",
-    "specialties": [
-      "ortho",
-      "pediatrics"
-    ],
-    "start_date": "2026-06-19",
-    "title": "DNS Pediatric Course Part 1",
-    "url": "course.php?c_id=3825"
   },
   "3a1e5d8e7392": {
     "audience": "Coaches, S&C, trainers (non-manual-therapy track)",
@@ -346,41 +365,6 @@
     "start_date": "2026-10-30",
     "title": "Basic course \"A\"",
     "url": "course.php?c_id=3906"
-  },
-  "414846056f2f": {
-    "audience": "PT, DC, ATC, S&C, Pilates, yoga, MD/DO",
-    "course_id": "414846056f2f",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-07",
-    "location": "Newport Beach, CA",
-    "notes": "Cross-disciplinary movement education. CA PTs typically self-submit; NSCA CEUs are standard. Verify with the host instructor before registering.",
-    "provider": "SomaVOYER",
-    "pt_attendable": true,
-    "pt_ceus": "yes (self-submit; NSCA CEU-approved at minimum)",
-    "specialties": [
-      "ortho",
-      "sports"
-    ],
-    "start_date": "2026-06-07",
-    "title": "SomaTherapy: 2-3: 2TLS - Upper Limbs",
-    "url": "https://www.somavoyer.com/course-calendar"
-  },
-  "417adad3e5e4": {
-    "audience": "PT, PTA (FMT system)",
-    "course_id": "417adad3e5e4",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-14",
-    "location": "Glendora, CA",
-    "notes": "IPA courses count toward CFMT Certification and IPA Residency/Fellowship.",
-    "provider": "Institute of Physical Art (IPA)",
-    "pt_attendable": true,
-    "pt_ceus": "yes",
-    "specialties": [
-      "ortho"
-    ],
-    "start_date": "2026-06-12",
-    "title": "CFS: CoreFirst Strategies",
-    "url": "https://instituteofphysicalart.com/scheduled-courses/"
   },
   "41a45ca6f70a": {
     "audience": "PT, PTA (FMT system)",
@@ -467,24 +451,6 @@
     "start_date": "2026-08-29",
     "title": "Basic course \"A\"",
     "url": "course.php?c_id=3660"
-  },
-  "4d2be31fc901": {
-    "audience": "PT, DC, ATC, MD (manual therapists only)",
-    "course_id": "4d2be31fc901",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-13",
-    "location": "ONLINE SEMINAR",
-    "notes": "Dr. Andreo Spina's FRS curriculum. Many events are online (filtered out here). Most in-person CA dates run as private host events; check the public calendar if a CA seminar appears.",
-    "provider": "Functional Range Systems (FRS)",
-    "pt_attendable": true,
-    "pt_ceus": "varies \u2014 verify per course page",
-    "specialties": [
-      "ortho",
-      "sports"
-    ],
-    "start_date": "2026-06-13",
-    "title": "FR\u00ae Spine Certification (Worldwide) - ONLINE SEMINAR",
-    "url": "https://functionalanatomyseminars.com/event-registration/?ee=1063"
   },
   "502d56c8b2d5": {
     "audience": "PT, DC, ATC, S&C, Pilates, yoga, MD/DO",
@@ -592,23 +558,6 @@
     "title": "SFGH: Fresh Cadaver Dissection Lower Quarter and Lumbo-Pelvic w/ Carla Stecco",
     "url": "https://www.cuptherapy.com/product-page/ucsf-fresh-cadaver-dissection-lower-extremity-amp-lower-trunk-pelvis"
   },
-  "5b0f9c92a46d": {
-    "audience": "PT, PTA (FMT system)",
-    "course_id": "5b0f9c92a46d",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-14",
-    "location": "Huntington Beach, CA",
-    "notes": "IPA courses count toward CFMT Certification and IPA Residency/Fellowship.",
-    "provider": "Institute of Physical Art (IPA)",
-    "pt_attendable": true,
-    "pt_ceus": "yes",
-    "specialties": [
-      "ortho"
-    ],
-    "start_date": "2026-06-12",
-    "title": "FMLE: Functional Mobilization Lower Extremities",
-    "url": "https://instituteofphysicalart.com/scheduled-courses/"
-  },
   "5fa22eb07c3c": {
     "audience": "PT, sports rehab clinicians",
     "course_id": "5fa22eb07c3c",
@@ -713,41 +662,6 @@
     "title": "Postural Respiration",
     "url": "https://www.posturalrestoration.com/courses/"
   },
-  "69ec903a8f5f": {
-    "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
-    "course_id": "69ec903a8f5f",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-08",
-    "location": "Stanford, CA",
-    "notes": "DNS = Dynamic Neuromuscular Stabilization (Kolar method). International curriculum; US courses run by certified DNS instructors. CA PT CEU via self-submission.",
-    "provider": "DNS / Prague School of Rehabilitation",
-    "pt_attendable": true,
-    "pt_ceus": "yes (self-submit syllabus to CA PTBC)",
-    "specialties": [
-      "ortho"
-    ],
-    "start_date": "2026-06-08",
-    "title": "DNS Skills Workshop",
-    "url": "course.php?c_id=4095"
-  },
-  "7ca83a951408": {
-    "audience": "PT, DC, ATC, S&C, Pilates, yoga, MD/DO",
-    "course_id": "7ca83a951408",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-27",
-    "location": "ONLINE SEMINAR",
-    "notes": "Dr. Andreo Spina's FRS curriculum. Many events are online (filtered out here). Most in-person CA dates run as private host events; check the public calendar if a CA seminar appears.",
-    "provider": "Functional Range Systems (FRS)",
-    "pt_attendable": true,
-    "pt_ceus": "varies \u2014 verify per course page",
-    "specialties": [
-      "ortho",
-      "sports"
-    ],
-    "start_date": "2026-06-27",
-    "title": "Kinstretch\u00ae Level 1 Certification Seminar (WORLDWIDE) - ONLINE SEMINAR",
-    "url": "https://functionalanatomyseminars.com/event-registration/?ee=1059"
-  },
   "7d5e37fee393": {
     "audience": "PT, DC, ATC, S&C, Pilates, yoga, MD/DO",
     "course_id": "7d5e37fee393",
@@ -802,24 +716,6 @@
     "title": "FRS Internal Strength Model\u00ae Certification Seminar (Worldwide) - ONLINE SEMINAR",
     "url": "https://functionalanatomyseminars.com/event-registration/?ee=1074"
   },
-  "8a91af768909": {
-    "audience": "PT, sports rehab clinicians",
-    "course_id": "8a91af768909",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-13",
-    "location": "Agile PT, 3825 El Camino Real, Palo Alto, CA 94306",
-    "notes": "Confirm CERS approval at registration. Each day-package bundles online lecture + in-person lab at Palo Alto.",
-    "provider": "Agile Physical Therapy",
-    "pt_attendable": true,
-    "pt_ceus": "yes",
-    "specialties": [
-      "ortho",
-      "sports"
-    ],
-    "start_date": "2026-06-13",
-    "title": "Sports Movement Analysis: Soccer / Cutting, Golf, Overhead Athletes",
-    "url": "https://agilept.com/education/continuing-education/"
-  },
   "8d3a70d5ed63": {
     "audience": "PT, DC, ATC, MD (manual therapists only)",
     "course_id": "8d3a70d5ed63",
@@ -837,23 +733,6 @@
     "start_date": "2026-09-12",
     "title": "FR\u00ae Lower Limb Certification (Worldwide) - ONLINE SEMINAR",
     "url": "https://functionalanatomyseminars.com/event-registration/?ee=1070"
-  },
-  "8f4c13268c20": {
-    "audience": "PT, ATC, LMT, PTA, OT, MD, DO, LAc",
-    "course_id": "8f4c13268c20",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "",
-    "location": "San Diego, CA",
-    "notes": "Provider lists CA PT board reciprocity (CERS-route); FSBPT-credentialed in most states. Verify level (L1/L2/BFR) and hours on product page.",
-    "provider": "Integrated Movement Health / Cup Therapy",
-    "pt_attendable": true,
-    "pt_ceus": "yes",
-    "specialties": [
-      "ortho"
-    ],
-    "start_date": "2026-06-13",
-    "title": "Level 1 with Full MFD Kit",
-    "url": "https://www.cuptherapy.com/product-page/san-diego-ca-level-1-with-full-mfd-kit"
   },
   "912945473929": {
     "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
@@ -1029,24 +908,6 @@
     "title": "DNS Basic Course \"B\"",
     "url": "https://www.rehabps.cz/rehab/co.php"
   },
-  "a415828a71e9": {
-    "audience": "Coaches, S&C, trainers (non-manual-therapy track)",
-    "course_id": "a415828a71e9",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-13",
-    "location": "ONLINE SEMINAR",
-    "notes": "Dr. Andreo Spina's FRS curriculum. Many events are online (filtered out here). Most in-person CA dates run as private host events; check the public calendar if a CA seminar appears.",
-    "provider": "Functional Range Systems (FRS)",
-    "pt_attendable": true,
-    "pt_ceus": "varies \u2014 verify per course page",
-    "specialties": [
-      "ortho",
-      "sports"
-    ],
-    "start_date": "2026-06-13",
-    "title": "Non-Therapist FR\u00ae Spine Seminar (Worldwide) - ONLINE SEMINAR",
-    "url": "https://functionalanatomyseminars.com/event-registration/?ee=1064"
-  },
   "a86d8d3ac952": {
     "audience": "PT, DC, ATC, MD/DO",
     "course_id": "a86d8d3ac952",
@@ -1203,23 +1064,6 @@
     "title": "REM: Resistance Enhanced Manipulation",
     "url": "https://instituteofphysicalart.com/scheduled-courses/"
   },
-  "b67a0465fba7": {
-    "audience": "PT, PTA (FMT system)",
-    "course_id": "b67a0465fba7",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-28",
-    "location": "Coronado, CA",
-    "notes": "IPA courses count toward CFMT Certification and IPA Residency/Fellowship.",
-    "provider": "Institute of Physical Art (IPA)",
-    "pt_attendable": true,
-    "pt_ceus": "yes",
-    "specialties": [
-      "ortho"
-    ],
-    "start_date": "2026-06-27",
-    "title": "KSC: Kinetic Shoulder Complex",
-    "url": "https://instituteofphysicalart.com/scheduled-courses/"
-  },
   "b751f76793b5": {
     "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
     "course_id": "b751f76793b5",
@@ -1254,23 +1098,23 @@
     "title": "Basic course \"B\"",
     "url": "course.php?c_id=4042"
   },
-  "bc2f1dca7f9a": {
-    "audience": "PT, PTA (FMT system)",
-    "course_id": "bc2f1dca7f9a",
-    "discovered_at": "2026-06-05T19:49:48",
-    "end_date": "2026-06-14",
-    "location": "Belmont, CA",
-    "notes": "IPA courses count toward CFMT Certification and IPA Residency/Fellowship.",
-    "provider": "Institute of Physical Art (IPA)",
+  "beeccd957c39": {
+    "audience": "Coaches, S&C, trainers (non-manual-therapy track)",
+    "course_id": "beeccd957c39",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "2026-11-14",
+    "location": "ONLINE SEMINAR",
+    "notes": "Dr. Andreo Spina's FRS curriculum. Many events are online (filtered out here). Most in-person CA dates run as private host events; check the public calendar if a CA seminar appears.",
+    "provider": "Functional Range Systems (FRS)",
     "pt_attendable": true,
-    "pt_ceus": "yes",
+    "pt_ceus": "varies \u2014 verify per course page",
     "specialties": [
       "ortho",
-      "pelvic"
+      "sports"
     ],
-    "start_date": "2026-06-13",
-    "title": "PGP: The Pelvic Girdle Puzzle",
-    "url": "https://instituteofphysicalart.com/scheduled-courses/"
+    "start_date": "2026-11-14",
+    "title": "Non-Therapist FR\u00ae Spine Certification (Worldwide) - ONLINE SEMINAR",
+    "url": "https://functionalanatomyseminars.com/event-registration/?ee=1089"
   },
   "c0b04d941b3c": {
     "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
@@ -1413,6 +1257,23 @@
     "title": "SomaTraining: 1-1: Strengthening of the Abdominals and Thoracic Diaphragm",
     "url": "https://www.somavoyer.com/course-calendar"
   },
+  "d81476959d88": {
+    "audience": "PT, DC, MD, DO, ATC, manual therapists, S&C coaches",
+    "course_id": "d81476959d88",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "2027-01-31",
+    "location": "Pasadena, CA",
+    "notes": "DNS = Dynamic Neuromuscular Stabilization (Kolar method). International curriculum; US courses run by certified DNS instructors. CA PT CEU via self-submission.",
+    "provider": "DNS / Prague School of Rehabilitation",
+    "pt_attendable": true,
+    "pt_ceus": "yes (self-submit syllabus to CA PTBC)",
+    "specialties": [
+      "ortho"
+    ],
+    "start_date": "2027-01-29",
+    "title": "DNS Strength Training Course \"Part I\"",
+    "url": "course.php?c_id=4120"
+  },
   "db43858c65d5": {
     "audience": "PT, PTA, OT, DC, ATC, S&C, LMT, Pilates instructors",
     "course_id": "db43858c65d5",
@@ -1538,6 +1399,24 @@
     "title": "FMUE: Functional Mobilization Upper Extremities",
     "url": "https://instituteofphysicalart.com/scheduled-courses/"
   },
+  "f3be7c224371": {
+    "audience": "PT, DC, ATC, MD/DO",
+    "course_id": "f3be7c224371",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "",
+    "location": "Urijah Faber's Ultimate Fitness Gym 6700 Folsom Blvd Sacramento, CA",
+    "notes": "CA is on ART's approved-state list; verify exact CE hours on registration page.",
+    "provider": "Active Release Techniques",
+    "pt_attendable": true,
+    "pt_ceus": "yes",
+    "specialties": [
+      "ortho",
+      "sports"
+    ],
+    "start_date": "2026-09-19",
+    "title": "Active Release Techniques (ART): Advanced Full Body",
+    "url": "https://education.activerelease.com/p/active-release-techniques-art-advanced-full-body?instance=69bda1dc6dddb5518f0b2590"
+  },
   "f753b8f89977": {
     "audience": "PT, DC, ATC, MD/DO",
     "course_id": "f753b8f89977",
@@ -1590,5 +1469,22 @@
     "start_date": "2026-11-14",
     "title": "Level 1 with Full MFD Kit",
     "url": "https://www.cuptherapy.com/product-page/laguna-niguel-ca-level-1-with-full-mfd-kit"
+  },
+  "fdb02ad76bfc": {
+    "audience": "PT, ATC, LMT, PTA, OT, MD, DO, LAc",
+    "course_id": "fdb02ad76bfc",
+    "discovered_at": "2026-07-01T16:12:43",
+    "end_date": "",
+    "location": "San Francisco, CA",
+    "notes": "Provider lists CA PT board reciprocity (CERS-route); FSBPT-credentialed in most states. Verify level (L1/L2/BFR) and hours on product page.",
+    "provider": "Integrated Movement Health / Cup Therapy",
+    "pt_attendable": true,
+    "pt_ceus": "yes",
+    "specialties": [
+      "ortho"
+    ],
+    "start_date": "2026-10-18",
+    "title": "Blood Flow Restriction Certification",
+    "url": "https://www.cuptherapy.com/product-page/phoenix-az-blood-flow-restriction-certification"
   }
 }
