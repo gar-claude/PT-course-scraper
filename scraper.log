@@ -708,3 +708,118 @@
 [2026-07-01 16:12:43]    wrote changes.md
 [2026-07-01 16:12:43] ==== Run done ====
 
+[2026-08-01 09:05:56] ==== Run start (providers: ALL) ====
+[2026-08-01 09:05:56] -- art (scrape_active_release) --
+[2026-08-01 09:05:59]    found 6 courses
+[2026-08-01 09:05:59]    6 within 365-day window
+[2026-08-01 09:05:59] -- barbell (scrape_barbell_rehab) --
+[2026-08-01 09:06:02]    found 2 courses
+[2026-08-01 09:06:02]    2 within 365-day window
+[2026-08-01 09:06:02] -- mulligan (scrape_mulligan) --
+[2026-08-01 09:06:04]    found 0 courses
+[2026-08-01 09:06:04]    0 within 365-day window
+[2026-08-01 09:06:04] -- cup (scrape_cup_therapy) --
+[2026-08-01 09:06:09]    found 15 courses
+[2026-08-01 09:06:09]    8 within 365-day window
+[2026-08-01 09:06:09] -- agile (scrape_agile_pt) --
+[2026-08-01 09:06:11]   Agile PT: parsed 5 CA event(s)
+[2026-08-01 09:06:11]    found 5 courses
+[2026-08-01 09:06:11]    2 within 365-day window
+[2026-08-01 09:06:11] -- cpta (scrape_cpta) --
+[2026-08-01 09:06:13]   FETCH FAILED https://www.ccapta.org/page/CPTACourses: 403 Client Error: Forbidden for url: https://www.ccapta.org/page/CPTACourses
+[2026-08-01 09:06:13]   CPTA: courses page fetch failed (will still try homepage)
+[2026-08-01 09:06:15]   FETCH FAILED https://www.ccapta.org/: 403 Client Error: Forbidden for url: https://www.ccapta.org/
+[2026-08-01 09:06:15]    found 1 courses
+[2026-08-01 09:06:15]    1 within 365-day window
+[2026-08-01 09:06:15] -- ucsf (scrape_ucsf) --
+[2026-08-01 09:06:18]    found 1 courses
+[2026-08-01 09:06:18]    0 within 365-day window
+[2026-08-01 09:06:18] -- pri (scrape_pri) --
+[2026-08-01 09:06:20]    found 3 courses
+[2026-08-01 09:06:20]    3 within 365-day window
+[2026-08-01 09:06:20] -- ipa (scrape_ipa) --
+[2026-08-01 09:06:20]    found 26 courses
+[2026-08-01 09:06:20]    16 within 365-day window
+[2026-08-01 09:06:20] -- gls (scrape_great_lakes) --
+[2026-08-01 09:06:20]    found 2 courses
+[2026-08-01 09:06:20]    1 within 365-day window
+[2026-08-01 09:06:20] -- hw (scrape_herman_wallace) --
+[2026-08-01 09:06:20]    found 1 courses
+[2026-08-01 09:06:20]    1 within 365-day window
+[2026-08-01 09:06:20] -- wilk (scrape_wilk) --
+[2026-08-01 09:06:20]    found 0 courses
+[2026-08-01 09:06:20]    0 within 365-day window
+[2026-08-01 09:06:20] -- vestibular (scrape_vestibular) --
+[2026-08-01 09:06:20]    found 1 courses
+[2026-08-01 09:06:20]    1 within 365-day window
+[2026-08-01 09:06:20] -- fms (scrape_fms) --
+[2026-08-01 09:06:23]   FMS: events page is JavaScript-rendered (static HTML shows 'No results returned'). Install Playwright for real scraping: `python3 -m pip install playwright && python3 -m playwright install chromium`, then re-run with `python3 ceu_scraper.py --use-playwright`. Or add confirmed CA dates to SEED_FMS_2026 in scrape_fms().
+[2026-08-01 09:06:23]    found 0 courses
+[2026-08-01 09:06:23]    0 within 365-day window
+[2026-08-01 09:06:23] -- amsi (scrape_amsi) --
+[2026-08-01 09:06:33]   AMSI: parsed 90 dated entries across 5 product pages
+[2026-08-01 09:06:33]    found 90 courses
+[2026-08-01 09:06:33]    dropped 90 out-of-region courses
+[2026-08-01 09:06:33]    0 within 365-day window
+[2026-08-01 09:06:33] -- aamt (scrape_aamt) --
+[2026-08-01 09:06:37]   AAMT: parsed 3 upcoming seminar(s) (text-walk=3)
+[2026-08-01 09:06:37]    found 3 courses
+[2026-08-01 09:06:37]    dropped 3 out-of-region courses
+[2026-08-01 09:06:37]    0 within 365-day window
+[2026-08-01 09:06:37] -- eldoa (scrape_eldoa) --
+[2026-08-01 09:06:39]   ELDOA/SomaVOYER: parsed 9 entries from somavoyer.com/course-calendar
+[2026-08-01 09:06:44]   ELDOA: eldoa.com seminars page returned content; verify manually
+[2026-08-01 09:06:44]    found 13 courses
+[2026-08-01 09:06:44]    8 within 365-day window
+[2026-08-01 09:06:44] -- ne_seminars (scrape_northeast_seminars) --
+[2026-08-01 09:06:49]   Northeast Seminars: 0 CA-area events on current public pages (Wilk 2026 is NY + Natick MA only; verify Mulligan/BFRT pages if you want a wider trawl)
+[2026-08-01 09:06:49]    found 0 courses
+[2026-08-01 09:06:49]    0 within 365-day window
+[2026-08-01 09:06:49] -- frs (scrape_frs) --
+[2026-08-01 09:06:53]   FRS: parsed 11 CA in-person event(s)
+[2026-08-01 09:06:53]    found 11 courses
+[2026-08-01 09:06:53]    11 within 365-day window
+[2026-08-01 09:06:53] -- painfree (scrape_painfree) --
+[2026-08-01 09:07:00]   Pain Free Training: 0 CA live events in static HTML. The events page appears to be JavaScript-rendered (only on-demand products visible). Check https://painfreetraining.com/events/ in a browser; add confirmed CA dates to SEED_PAINFREE in this function.
+[2026-08-01 09:07:00]    found 0 courses
+[2026-08-01 09:07:00]    0 within 365-day window
+[2026-08-01 09:07:00] -- dns (scrape_dns) --
+[2026-08-01 09:07:03]   DNS: found 278 course-anchor links, regex matched 278; 13 match California
+[2026-08-01 09:07:03]    found 23 courses
+[2026-08-01 09:07:03]    dropped 1 out-of-region courses
+[2026-08-01 09:07:03]    16 within 365-day window
+[2026-08-01 09:07:03] -- pelvic_apta (scrape_pelvic_health) --
+[2026-08-01 09:07:07]   Pelvic/APTA: parsed 0 CA entries from live page
+[2026-08-01 09:07:07]    found 0 courses
+[2026-08-01 09:07:07]    0 within 365-day window
+[2026-08-01 09:07:07] -- pain_science (scrape_pain_science) --
+[2026-08-01 09:07:13]   Pain Science/NOI: parsed 0 CA entries
+[2026-08-01 09:07:13]    found 0 courses
+[2026-08-01 09:07:13]    0 within 365-day window
+[2026-08-01 09:07:13] -- lymphedema (scrape_lymphedema) --
+[2026-08-01 09:07:15]   Lymphedema/Norton: parsed 0 CA entries
+[2026-08-01 09:07:15]    found 0 courses
+[2026-08-01 09:07:15]    0 within 365-day window
+[2026-08-01 09:07:15] -- tmj (scrape_tmj) --
+[2026-08-01 09:07:19]   TMJ/Treating TMJ (TMD & Craniofacial Pain): parsed 1 CA entries
+[2026-08-01 09:07:19]    found 1 courses
+[2026-08-01 09:07:19]    dropped 1 out-of-region courses
+[2026-08-01 09:07:19]    0 within 365-day window
+[2026-08-01 09:07:19] -- pediatrics (scrape_pediatric_pt) --
+[2026-08-01 09:07:21]   Pediatric/NDTA: parsed 0 CA entries
+[2026-08-01 09:07:21]    found 0 courses
+[2026-08-01 09:07:21]    0 within 365-day window
+[2026-08-01 09:07:21] -- hands (scrape_hand_therapy) --
+[2026-08-01 09:07:24]   Hand Therapy/ASHT: parsed 0 CA entries
+[2026-08-01 09:07:24]    found 0 courses
+[2026-08-01 09:07:24]    0 within 365-day window
+[2026-08-01 09:07:24] -- cardiopulmonary (scrape_cardiopulmonary_pt) --
+[2026-08-01 09:07:24]   Cardiopulmonary: 0 seeded entries. Add CA dates to SEED_CARDIO_2026. Check https://www.aptacvp.org/events
+[2026-08-01 09:07:24]    found 0 courses
+[2026-08-01 09:07:24]    0 within 365-day window
+[2026-08-01 09:07:24] == Total after dedup: 76 ==
+[2026-08-01 09:07:24] == Diff: +6 added, ~0 changed, -15 removed ==
+[2026-08-01 09:07:25]    wrote courses_current.md (76 courses)
+[2026-08-01 09:07:25]    wrote changes.md
+[2026-08-01 09:07:25] ==== Run done ====
+
